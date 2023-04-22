@@ -67,6 +67,8 @@ if uploaded_file is not None:
 
     st.image(myimage, caption='Image uploaded')
 
+    os.remove(os.path.join(pathtempDir,uploaded_file.name))
+
 
    
 
