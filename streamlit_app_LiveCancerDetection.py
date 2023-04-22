@@ -36,6 +36,10 @@ The preview display the first layer of the svs file.
 
 
 """
+
+ st.button("Diagnostic", key=None, help=None, on_click=None, args=None, kwargs=None,  type="secondary", disabled=True, use_container_width=False)
+
+
 uploaded_file = st.file_uploader("Choose a file")
 
 
@@ -60,7 +64,6 @@ if uploaded_file is not None:
     myimage = scene.read_block(size=(1500,0))
 
 
-    st.button("Diagnostic", key=None, help=None, on_click=None, args=None, kwargs=None,  type="secondary", disabled=True, use_container_width=False)
 
     """
     # Preview
