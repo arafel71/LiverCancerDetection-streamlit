@@ -59,6 +59,9 @@ if uploaded_file is not None:
     # A code snippet bellow. retrieves the whole image and scales it to 500 pixels width picture
     myimage = scene.read_block(size=(1500,0))
 
+
+    st.button("Diagnostic", key=None, help=None, on_click=None, args=None, kwargs=None, *, type="secondary", disabled=True, use_container_width=False)
+
     """
     # Preview
     #  
