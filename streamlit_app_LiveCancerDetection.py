@@ -28,14 +28,13 @@ pathtempDir = os.path.join(directory + r'//tempDir/')
 
 
 """
-# Welcome to Streamlit!
+# Liver Cancer Detection Application
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+Upload your SVS Whole slide image file and click the button Diagnostic !
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+The preview display the first layer of the svs file.
 
-In the meantime, below is an example of what you can do with just a few lines of code:
+
 """
 uploaded_file = st.file_uploader("Choose a file")
 
@@ -57,8 +56,14 @@ if uploaded_file is not None:
     st.write(num_scenes, scene.name, scene.rect, scene.num_channels)
 
 
-    """ A code snippet bellow. retrieves the whole image and scales it to 500 pixels width picture """
+    # A code snippet bellow. retrieves the whole image and scales it to 500 pixels width picture
     myimage = scene.read_block(size=(1500,0))
+
+    """
+    # Preview
+    #  
+
+    """
 
     st.image(myimage, caption='Image uploaded')
 
