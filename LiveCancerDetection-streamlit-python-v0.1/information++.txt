@@ -1,3 +1,0 @@
-pip install slideio
-
-Reboot the app in streamlit if necessary(new import , memory limit, etc...)

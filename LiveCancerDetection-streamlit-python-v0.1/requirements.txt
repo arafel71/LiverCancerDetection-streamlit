@@ -1,5 +1,0 @@
-slideio
-altair
-pandas
-streamlit
-
