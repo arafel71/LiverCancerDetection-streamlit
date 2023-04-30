@@ -25,14 +25,15 @@ pathtempDir = os.path.join(directory + r'//tempDir/')
 
 
 
+st.markdown(f'<h1 style="color:#ffffff;padding:5px;margin:5px;background-color:#Eaa7a6;font-size:40px;">{"  Liver Cancer Detection Application"}</h1>', unsafe_allow_html=True)
 
 
 """
-# Liver Cancer Detection Application
+# 
 
 Upload your SVS Whole slide image file and click the button Diagnostic !
 
-The preview display the first layer of the svs file.
+The preview display all the layers of the svs file.
 
 
 """
@@ -40,7 +41,7 @@ The preview display the first layer of the svs file.
 st.button("Diagnostic", key=None, help=None, on_click=None, args=None, kwargs=None,  type="secondary", disabled=True, use_container_width=False)
 
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Choose a .svs file", type=['svs'])
 
 
 if uploaded_file is not None:
@@ -53,15 +54,15 @@ if uploaded_file is not None:
 
     slide = slideio.open_slide(os.path.join(pathtempDir,uploaded_file.name),"SVS")
    
+    ########################
     num_scenes = slide.num_scenes
-    scene = slide.get_scene(0)   
+    #scene = slide.get_scene(0)   
+
+    #st.write(num_scenes, scene.name, scene.rect, scene.num_channels)
+
+    st.write("Number of scenes in the file : ", num_scenes)
 
 
-    st.write(num_scenes, scene.name, scene.rect, scene.num_channels)
-
-
-    # A code snippet bellow. retrieves the whole image and scales it to 500 pixels width picture
-    myimage = scene.read_block(size=(1500,0))
 
 
 
@@ -71,7 +72,22 @@ if uploaded_file is not None:
 
     """
 
-    st.image(myimage, caption='Image uploaded')
+    #st.image(myimage, caption='Image uploaded')
+
+
+    num_scenes = slide.num_scenes
+    for index in range(0, num_scenes):
+      scene = slide.get_scene(index)   
+      st.write("Scene Number ", index+1)
+      #  retrieves the image of the layerand scales it to 1500 pixels width picture
+
+      myimage = scene.read_block(size=(1500,0))
+      mycaption = "Scene " + str(index + 1)
+      st.image(myimage, caption=mycaption)
+
+      #print(slide.get_scene(index).name)
+
+
 
     os.remove(os.path.join(pathtempDir,uploaded_file.name))
 
